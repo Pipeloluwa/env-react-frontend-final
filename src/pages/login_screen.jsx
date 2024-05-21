@@ -108,56 +108,64 @@ export default function LoginScreen() {
 
    
    function loginPostRes(res){
-    bearer_token= res.data.token_type + " " + res.data.access_token;
-    axios.get(api_root + 'admin/manual_verify_user', {
-        headers: {
-            'Authorization': bearer_token,
-            'Content-Type': 'application/json', // Add other headers if needed
-          },
-    }).then(res => {
-
-        handleDeleteCookie();
-        // localStorage.removeItem('username');
-        // localStorage.removeItem('password');
-
-        setCookie('access_token', bearer_token, 1);
-        setCookie("login_role", res.data, 1);
-
-        if (rememberMe){
-            localStorage.setItem("username", username_value);
-            localStorage.setItem("password", password_value);
+    try {
+      bearer_token= res.data.token_type + " " + res.data.access_token;
+      axios.get(api_root + 'admin/manual_verify_user', {
+          headers: {
+              'Authorization': bearer_token,
+              'Content-Type': 'application/json', // Add other headers if needed
+            },
+      }).then(res => {
+  
+          handleDeleteCookie();
+          // localStorage.removeItem('username');
+          // localStorage.removeItem('password');
+  
+          setCookie('access_token', bearer_token, 1);
+          setCookie("login_role", res.data, 1);
+  
+          if (rememberMe){
+              localStorage.setItem("username", username_value);
+              localStorage.setItem("password", password_value);
+          }
+  
+        
+  
+          if (res.data === "user"){navigate("/reviewer-model", {relative: true})}
+          else if (res.data === "admin"){navigate("/tagger-management", {relative: true});}
+          else if (res.data === "superuser"){navigate("/admin-super-management", {relative: true})}
+          else{
+              navigate("/", {relative: true})
+          }
+      })
+      .catch(e => {
+        if (e.response.status === 404){
+          api_error_disp_(e)
         }
-
-      
-
-        if (res.data === "user"){navigate("/reviewer-model", {relative: true})}
-        else if (res.data === "admin"){navigate("/tagger-management", {relative: true});}
-        else if (res.data === "superuser"){navigate("/admin-super-management", {relative: true})}
+  
+        else if (e.message === "Network Error"){
+          api_error_disp_(e)
+        }
+  
         else{
-            navigate("/", {relative: true})
+          api_error_disp_("Sorry, Something went wrong");
         }
-    })
-    .catch(e => {
-      if (e.response.status === 404){
-        api_error_disp_(e)
-      }
+  
+      });
+  
+      setshowProcessing(false);
+    } catch (error) {
+      api_error_disp_("Sorry, Something went wrong");
+      setshowProcessing(false);
+    }
 
-      else if (e.message === "Network Error"){
-        api_error_disp_(e)
-      }
-
-      else{
-        api_error_disp_("Sorry, Something went wrong");
-      }
-
-    });
-
-    setshowProcessing(false);
     
   }
 
-  function loginPost(){
 
+
+
+  function loginPost(){
     const username= username_value.toLowerCase().trim();
     const password= password_value;
 
@@ -168,32 +176,38 @@ export default function LoginScreen() {
     const json_data= {'username': username,'password': password}
     
     setshowProcessing(true);
-    axios.post(
-      api_root + 'login',
-      json_data,
-      {
-        headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        // withCredentials: true
-      }
-    ).then(res => loginPostRes(res))
-    .catch(e => {
-
-      if (e.response.status === 404){
-        api_error_disp_(e)
-      }
-
-      else if (e.message === "Network Error"){
-        api_error_disp_(e)
-      }
-
-      else{
-        api_error_disp_("Sorry, Something went wrong");
-      }
+    try {
+      axios.post(
+        api_root + 'login',
+        json_data,
+        {
+          headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          // withCredentials: true
+        }
+      ).then(res => loginPostRes(res))
+      .catch(e => {
+  
+        if (e.response.status === 404){
+          api_error_disp_(e)
+        }
+  
+        else if (e.message === "Network Error"){
+          api_error_disp_(e)
+        }
+  
+        else{
+          api_error_disp_("Sorry, Something went wrong");
+        }
+        setshowProcessing(false);
+      });
+      // setLoggedIn(true);
+    } catch (error) {
+      api_error_disp_("Sorry, Something went wrong");
       setshowProcessing(false);
-    });
-    // setLoggedIn(true);
+    }
+
   }
 
 
