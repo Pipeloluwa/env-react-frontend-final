@@ -140,23 +140,23 @@ export default function LoginScreen() {
       })
       .catch(e => {
         if (e.response.status === 404){
-          api_error_disp_(e)
+          return api_error_disp_(e)
         }
   
         else if (e.message === "Network Error"){
-          api_error_disp_(e)
+          return api_error_disp_(e)
         }
   
         else{
-          api_error_disp_("Sorry, Something went wrong");
+          return api_error_disp_("Sorry, Something went wrong");
         }
   
       });
   
       setshowProcessing(false);
     } catch (error) {
-      api_error_disp_("Sorry, Something went wrong");
       setshowProcessing(false);
+      return api_error_disp_("Sorry, Something went wrong");
     }
 
     
@@ -166,6 +166,9 @@ export default function LoginScreen() {
 
 
   function loginPost(){
+    error_disp_();
+    set_api_error_disp("");
+
     const username= username_value.toLowerCase().trim();
     const password= password_value;
 
@@ -190,22 +193,22 @@ export default function LoginScreen() {
       .catch(e => {
   
         if (e.response.status === 404){
-          api_error_disp_(e)
+          return api_error_disp_(e)
         }
   
         else if (e.message === "Network Error"){
-          api_error_disp_(e)
+          return api_error_disp_(e)
         }
   
         else{
-          api_error_disp_("Sorry, Something went wrong");
+          return api_error_disp_("Sorry, Something went wrong");
         }
         setshowProcessing(false);
       });
       // setLoggedIn(true);
     } catch (error) {
-      api_error_disp_("Sorry, Something went wrong");
       setshowProcessing(false);
+      return api_error_disp_("Sorry, Something went wrong");
     }
 
   }
@@ -266,14 +269,12 @@ export default function LoginScreen() {
                           </div>
                       </div>
 
-                      <div  className='flex'>
-                          {!error_disp 
-                              ? <div className="text-red-100 hidden"> Please all the fields must be filled</div>
-                              
-                              : <div className="text-red-100"> Please all the fields must be filled</div>
-                          }
+                      <div  className='flex text-red-600 font-medium underline mt-8 -mb-10 mx-auto'>
+                        
+                          <div className={`${!error_disp ? "hidden pointer-events-none": "visible"}`}> Please all the fields must be filled</div>
+                          
 
-                          <div className="text-red-600 font-medium underline mt-8 -mb-10 mx-auto">{api_error_disp}</div>
+                          <div >{api_error_disp}</div>
                       </div>
 
                       {/* ++++++++++++++++++ HELPERS +++++++++++++++++++ */}
