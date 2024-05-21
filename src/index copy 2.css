@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* .all-\[unset\] {
+    all: unset;
+  } */
+
+  
+  .text-header{
+    @apply text-2xl font-bold;
+  }
+
+  .my-picture-style{
+    @apply overflow-hidden rounded-full shadow shadow-gray-700;
+  }
+
+  .my-shadow-style{
+    @apply shadow shadow-gray-700;
+  }
+
+  .my-image-cover-style{
+    @apply object-cover w-full h-full;
+  }
+
+  .my-button-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] px-6 text-white font-bold bg-black mt-6 py-3 rounded-3xl border border-white hover:bg-white hover:border hover:border-black hover:text-black hover:animate-pulse;
+  }
+
+  .my-button-border-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] px-6 text-black font-bold bg-white mt-6 py-3 rounded-3xl border border-black hover:bg-black hover:border hover:border-white hover:text-white hover:animate-pulse;
+  }
+
+  .my-hover-transition{
+    @apply hover:scale-105 duration-300 hover:border-2 hover:border-yellow-500;
+  }
+}
+
+
+/* :root {
+  --black-2: rgba(54, 54, 54, 1);
+  --f4-white: rgba(244, 244, 244, 1);
+} */
+
+
+body{
+  background-color: #ffffff;
+}

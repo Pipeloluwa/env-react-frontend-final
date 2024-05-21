@@ -1,0 +1,67 @@
+        const [mobileMenu, setMobileMenu]= useState(false);
+        const mobileMenu_ = () => {
+            setMobileMenu(!mobileMenu);
+        }
+
+        <div className="lg:grid lg:grid-cols-5 relative flex w-screen h-screen overflow-hidden">
+            {/* ++++++++++++++++++ FULLSCREEN NAV +++++++++++++++++ */}
+            <DesktopMenu sendActive= {"users"}/>
+
+            {/* +++++++++++++++ USING RELATIVE WITH SCROLLING MAKES THIS WORK ++++++++++++++++ */}
+            <div className="relative overflow-y-scroll lg:col-span-4 flex flex-col w-full">
+                
+              
+
+
+                <NavHeader navTitle= {"Models"} mobileMenuProp_= {mobileMenu_} mobileMenu= {mobileMenu}/>
+
+            </div>
+
+            <MobileMenu mobileMenu= {mobileMenu} sendActive= {"users"} />
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+                                <div className="pb-10 relative top-[140px] flex justify-between w-full md:px-[200px] sm:px-[100px] px-[10px] sm:text-base text-[12px]">
+                            {/* <button className="font-medium underline">
+                                Prev
+                            </button> */}
+
+
+                            {/* <div className="flex w-full justify-between sm:px-16 px-4">
+                                <button className="hover:bg-gray-300 bg-black text-white sm:px-2 px-[6px] rounded-full">
+                                    1
+                                </button>
+
+                                <button className="hover:bg-gray-300 text-black px-2 rounded-full">
+                                    2
+                                </button>
+
+                                <button className="hover:bg-gray-300 text-black px-2 rounded-full">
+                                    3
+                                </button>
+
+                                <button className="hover:bg-gray-300 text-black px-2 rounded-full">
+                                    4
+                                </button>
+
+                                <button className="hover:bg-gray-300 text-black px-2 rounded-full">
+                                    5
+                                </button>
+
+                            </div> */}
+
+
+                            {/* <button className="font-medium underline">
+                                Next
+                            </button> */}
+
+                        </div>

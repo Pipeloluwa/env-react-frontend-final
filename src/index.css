@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body{
+  background-color: #ffffff;
+}
+
+
+/* LEVA STYLING */
+/* #leva__root > * {
+  width: 4000px;
+}
+
+#leva__root > * {
+  scale: 50%;
+} */
+
+/* .leva-container {
+  width: 500px;
+} */
+
+
+
+ /* TAILWIND STYLING */
+@layer components {
+  .text-header{
+    @apply text-2xl font-bold;
+  }
+
+  .my-picture-style{
+    @apply overflow-hidden rounded-full shadow shadow-gray-700;
+  }
+
+  .my-shadow-style{
+    @apply shadow shadow-gray-700;
+  }
+
+  .my-shadow-style2{
+    @apply shadow-sm shadow-gray-500
+  }
+
+  .my-image-cover-style{
+    @apply object-cover w-full h-full;
+  }
+
+  .my-button-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] sm:px-6 px-4 text-white font-bold bg-black mt-6 md:py-3 sm:py-2 h-[60px] md:h-fit rounded-xl border border-white hover:bg-white hover:border hover:border-black hover:text-black;
+  }
+
+  .my-small-button-style{
+    @apply cursor-pointer flex justify-center items-center text-[14px] sm:py-2 px-4 h-[60px] md:h-fit font-bold rounded-xl;
+  }
+
+  .my-black-button-color-style{
+    @apply text-white bg-black hover:bg-white hover:border hover:border-black hover:text-black border border-white;
+  }
+
+  .my-white-button-color-style{
+    @apply text-black bg-white border border-black hover:bg-black hover:border hover:border-white hover:text-white;
+  }
+
+  .my-button-border-style{
+    @apply cursor-pointer flex justify-center items-center text-[18px] px-6 text-black font-bold bg-white mt-6 py-3 rounded-3xl border border-black hover:bg-black hover:border hover:border-white hover:text-white;
+  }
+
+  .my-button-size{
+    @apply size-10
+  }
+
+  .my-hover-transition{
+    @apply hover:scale-105 duration-300 hover:border-2 hover:border-yellow-500;
+  }
+
+  .my-screen-padding{
+    @apply lg:px-16 sm:px-10 px-5 lg:mt-24 mt-20;
+  }
+
+  .my-hover-circle{
+    @apply hover:bg-gray-300 rounded-full;
+  }
+
+  .my-circular-progress{
+    @apply h-[10px] md:scale-[90%] sm:scale-[75%] scale-[40%] flex justify-center items-center;
+  }
+}
+

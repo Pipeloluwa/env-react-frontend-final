@@ -1,0 +1,8 @@
+Available Styling Props:
+
+collapsed: Controls the initial state of the panel (boolean).
+color: Sets the overall color theme (e.g., Leva.ColorPresets.DARK, Leva.ColorPresets.LIGHT).
+dimensions: Customizes the width and height (e.g., dimensions={{ width: '300px', height: '400px' }}).
+position: Specifies the positioning (e.g., position={{ top: '10px', left: '20px' }}).
+zIndex: Sets the stacking order (e.g., zIndex={2}).
+theme: Provides a custom theme object for more granular control (refer to Leva documentation for details).
