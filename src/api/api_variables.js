@@ -4,7 +4,7 @@ import axios from "axios";
 //     baseURL: 'https://http://127.0.0.1:8000/'
 // });
 
-export const api_root= 'http://127.0.0.1:8000/'; 
+export const api_root= 'https://env-backend-papicnation-bcfeffef.koyeb.app/'; 
 export var bearer_token= null;
 export let keep_user_data= [];
 export let keep_json_data= [];
