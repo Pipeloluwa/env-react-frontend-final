@@ -166,7 +166,7 @@ export default function LoginScreen() {
 
 
   function loginPost(){
-    error_disp_();
+    set_error_disp(false);
     set_api_error_disp("");
 
     const username= username_value.toLowerCase().trim();
